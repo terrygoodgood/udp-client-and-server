@@ -1,6 +1,23 @@
-# udp-client-and-server
+# UDP Client and Server
 
-<h1> demo link : https://www.youtube.com/watch?v=_-FQ30OVD1o
+
+
+<h1> demo link : <h5>https://www.youtube.com/watch?v=_-FQ30OVD1o
+
+<h1> How to run the codes
+
+<h4> client running command
+
+```
+<path to client>/client <message without space> <MAX_RETRY> <Server IP>
+```
+<h4> server running command
+
+```
+<path to server>/server
+```
+
+
 <h2> client code (UDP-Client.c):
 <h3> void Connect_To_Server_And_Send_Message(int sockfd, struct sockaddr_in servaddr, char* message, char* buffer, int MAX_RETRY, int wait_time, int multiplier) 
 <h4> The function does :
