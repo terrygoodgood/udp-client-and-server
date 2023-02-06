@@ -60,9 +60,9 @@ void Connect_To_Server_And_Send_Message(int sockfd, struct sockaddr_in servaddr,
     }
 }
 
-void Init_ServAddr(struct sockaddr_in* servaddr){
+void Init_ServAddr(struct sockaddr_in* servaddr, char* ServerIP){
     bzero(servaddr, sizeof(servaddr));
-    servaddr->sin_addr.s_addr = inet_addr("0.0.0.0");
+    servaddr->sin_addr.s_addr = inet_addr(ServerIP);
     servaddr->sin_port = htons(PORT);
     servaddr->sin_family = AF_INET;
 }
@@ -83,7 +83,8 @@ void main(int argc,  char *argv[])
     char* str         = argv[2];
     int MAX_RETRY;
     sscanf(str, "%d", &MAX_RETRY);
-	bool UDP = true;
+    bool UDP = true;
+    char* ServerIP      = argv[3];
 
     /////////////////////////////////////////
     ///         Wait Interval Args        ///
@@ -98,7 +99,7 @@ void main(int argc,  char *argv[])
     //////////////////////////////////////////////////////////////////
 
     struct sockaddr_in servaddr;
-    Init_ServAddr(&servaddr);
+    Init_ServAddr(&servaddr, ServerIP);
 	sockfd = Create_Socket(UDP); // true -> UDP ; false -> TCP
 
     //////////////////////////////////////////////////////////////////////////
